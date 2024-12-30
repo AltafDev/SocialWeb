@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import LeftSlider from "@/components/Leftslider";
+import RightSider from "@/components/RightSider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,12 +22,32 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+
+
+<html lang="en">
+<ClerkProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+       <div className="h-fit flex justify-between ">
+       <div className=" ">
+  <RightSider  />
+</div>
+<div className="">
+{children}
+</div>
+
+<div className="bg-blue-700  w-[24rem]">
+  <LeftSlider/>
+</div>
+
+</div>
       </body>
+      
+</ClerkProvider>
     </html>
-  );
+
+
+);
+
 }
